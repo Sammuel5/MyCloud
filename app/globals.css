@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 33% 98%;
+    --foreground: 222 32% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 32% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 32% 12%;
+    --primary: 221 83% 53%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 214 32% 94%;
+    --secondary-foreground: 222 30% 20%;
+    --muted: 214 32% 95%;
+    --muted-foreground: 215 16% 46%;
+    --accent: 214 32% 94%;
+    --accent-foreground: 222 30% 18%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 214 26% 89%;
+    --input: 214 26% 87%;
+    --ring: 221 83% 53%;
+    --radius: 0.65rem;
+    --sidebar: 222 31% 14%;
+    --sidebar-foreground: 210 30% 96%;
+    --sidebar-muted: 215 20% 64%;
+    --sidebar-border: 218 24% 22%;
+    --sidebar-accent: 221 83% 58%;
+  }
+
+  .dark {
+    --background: 222 30% 8%;
+    --foreground: 210 30% 96%;
+    --card: 222 28% 11%;
+    --card-foreground: 210 30% 96%;
+    --popover: 222 28% 11%;
+    --popover-foreground: 210 30% 96%;
+    --primary: 217 91% 64%;
+    --primary-foreground: 222 40% 8%;
+    --secondary: 217 24% 17%;
+    --secondary-foreground: 210 30% 94%;
+    --muted: 217 24% 16%;
+    --muted-foreground: 215 18% 65%;
+    --accent: 217 24% 17%;
+    --accent-foreground: 210 30% 96%;
+    --destructive: 0 63% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 217 20% 20%;
+    --input: 217 20% 22%;
+    --ring: 217 91% 64%;
+    --sidebar: 224 32% 7%;
+    --sidebar-foreground: 210 30% 96%;
+    --sidebar-muted: 215 16% 62%;
+    --sidebar-border: 218 22% 16%;
+    --sidebar-accent: 217 91% 64%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html,
+  body {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  ::selection {
+    @apply bg-primary/20 text-foreground;
+  }
+
+  input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--border)) transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 999px;
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, hsl(var(--border) / 0.45) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border) / 0.45) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+  .drag-active {
+    @apply border-primary bg-primary/5;
+  }
+}
+
+/* Keep native video controls usable on dark backgrounds. */
+video {
+  background-color: #0f172a;
+}
+
+/* Improve PDF iframe contrast in dialogs. */
+iframe {
+  color-scheme: light;
+}
